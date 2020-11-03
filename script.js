@@ -59,7 +59,7 @@ console.log(roster);
 
 //create freeAgents
 const paulMillsap=new Player('Paul','Millsap','PF',35,-1,-1,4);
-const markGasol= new Player('Mark','Gasol','C',35,-1,-1,33);
+const marcGasol= new Player('Marc','Gasol','C',35,-1,-1,33);
 const sergeIbaka= new Player('Serge', 'Ibaka','C',31,-1,-1,9);
 const daniloGallinari= new Player('Danilo','Gallinari','SF',32,-1,-1,8);
 const jeffTeague= new Player('Jeff','Teague','PG',32,-1,-1,00);
@@ -91,6 +91,35 @@ const jeramiGrant = new Player('Jerami','Grant','F',26,14000000,7,9);
 const darioSaric= new Player('Dario','Saric','PF',26,-1,-1,20);
 
 //Add FA to FA map
+freeAgents.set(paulMillsap.jNumber,paulMillsap);
+freeAgents.set(marcGasol.jNumber,marcGasol);
+freeAgents.set(sergeIbaka.jNumber,sergeIbaka);
+freeAgents.set(daniloGallinari.jNumber,daniloGallinari);
+freeAgents.set(jeffTeague.jNumber,jeffTeague);
+freeAgents.set(rajonRando.jNumber,rajonRando);
+freeAgents.set(derrickFavors.jNumber,derrickFavors);
+freeAgents.set(kentBazemore.jNumber,Bazemore);
+freeAgents.set(christianWood.jNumber,christianWood);
+freeAgents.set(goranDragic.jNumber,goranDragic);
+freeAgents.set(tristanThompson.jNumber,tristanThompson);
+freeAgents.set(davisBertans.jNumber,davisBertans);
+freeAgents.set(joeHarris.jNumber,joeHarris);
+freeAgents.set(kellyOlynyk.jNumber,kellyOlynyk);
+freeAgents.set(marcusMorris.jNumber,marcusMorris);
+freeAgents.set(jordanClarkson.jNumber,jordanClarkson);
+freeAgents.set(andreRoberson.jNumber,andreRoberson);
+freeAgents.set(joshJackson.jNumber,joshJackson);
+freeAgents.set(jamesEnnis.jNumber,jamesEnnis);
+freeAgents.set(jahlilOkafor.jNumber,jahlilOkafor);
+freeAgents.set(justinHoliday.jNumber,justinHoliday);
+freeAgents.set(hassanWhiteside.jNumber,hassanWhiteside);
+freeAgents.set(fredVanVleet.jNumber,fredVanVleet);
+freeAgents.set(demarDeRozan.jNumber,demarDeRozan);
+freeAgents.set(masonPlumlee.jNumber,masonPlumlee);
+freeAgents.set(jabariParker.jNumber,jabariParker);
+freeAgents.set(harryGiles.jNumber,harryGiles);
+freeAgents.set(jeramiGrant.jNumber,jeramiGrant);
+freeAgents.set(darioSaric.jNumber,darioSaric);
 
 //Add CP3 and others to OKC Map
 
