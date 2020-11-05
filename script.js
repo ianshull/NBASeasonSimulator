@@ -3,6 +3,7 @@ let freeAgents = new Map();
 let okc = new Map();
 let tradePieces;
 const BLANK_PLAYER = "";
+const SALARY_CAP = 109115000;
 function Player(fName,lName,pos,age,salary,asset,num,url=BLANK_PLAYER, ntc=false) {
 	this.first = fName;
 	this.last = lName;
@@ -15,6 +16,31 @@ function Player(fName,lName,pos,age,salary,asset,num,url=BLANK_PLAYER, ntc=false
 	this.noTrade=ntc;
 }
 
+function Team(city,nickname,abbr,rosterMap) {
+	this.city = city;
+	this.name = nickname;
+	this.abbr = abbr;
+	this.roster = rosterMap;
+	this.capSpace = function() {
+		var teamSal = 0;
+		for (let player of Array.from(roster.values())) {
+			teamSal+= player.salary;
+		}
+		return SALARY_CAP - teamSal;
+	}
+}
+
+/*POSITION CODES:
+*		1: PG
+*		1.5: G
+*		2: SG
+*		2.5: W
+*		3: SF
+*		3.5: F
+*		4: PF
+*		4.5: F/C
+*		5: C
+*		*/
 
 //create all Knicks players
 const rj = new Player('R.J.','Barrett','W',20,8231760,8,9);
@@ -59,7 +85,7 @@ console.log(roster);
 
 //create freeAgents
 const paulMillsap=new Player('Paul','Millsap','PF',35,-1,-1,4);
-const markGasol= new Player('Mark','Gasol','C',35,-1,-1,33);
+const marcGasol= new Player('Marc','Gasol','C',35,-1,-1,33);
 const sergeIbaka= new Player('Serge', 'Ibaka','C',31,-1,-1,9);
 const daniloGallinari= new Player('Danilo','Gallinari','SF',32,-1,-1,8);
 const jeffTeague= new Player('Jeff','Teague','PG',32,-1,-1,00);
@@ -91,8 +117,66 @@ const jeramiGrant = new Player('Jerami','Grant','F',26,14000000,7,9);
 const darioSaric= new Player('Dario','Saric','PF',26,-1,-1,20);
 
 //Add FA to FA map
+freeAgents.set(paulMillsap.jNumber,paulMillsap);
+freeAgents.set(marcGasol.jNumber,marcGasol);
+freeAgents.set(sergeIbaka.jNumber,sergeIbaka);
+freeAgents.set(daniloGallinari.jNumber,daniloGallinari);
+freeAgents.set(jeffTeague.jNumber,jeffTeague);
+freeAgents.set(rajonRando.jNumber,rajonRando);
+freeAgents.set(derrickFavors.jNumber,derrickFavors);
+freeAgents.set(kentBazemore.jNumber,kentBazemore);
+freeAgents.set(christianWood.jNumber,christianWood);
+freeAgents.set(goranDragic.jNumber,goranDragic);
+freeAgents.set(tristanThompson.jNumber,tristanThompson);
+freeAgents.set(davisBertans.jNumber,davisBertans);
+freeAgents.set(joeHarris.jNumber,joeHarris);
+freeAgents.set(kellyOlynyk.jNumber,kellyOlynyk);
+freeAgents.set(marcusMorris.jNumber,marcusMorris);
+freeAgents.set(jordanClarkson.jNumber,jordanClarkson);
+freeAgents.set(andreRoberson.jNumber,andreRoberson);
+freeAgents.set(joshJackson.jNumber,joshJackson);
+freeAgents.set(jamesEnnis.jNumber,jamesEnnis);
+freeAgents.set(jahlilOkafor.jNumber,jahlilOkafor);
+freeAgents.set(justinHoliday.jNumber,justinHoliday);
+freeAgents.set(hassanWhiteside.jNumber,hassanWhiteside);
+freeAgents.set(fredVanVleet.jNumber,fredVanVleet);
+freeAgents.set(demarDeRozan.jNumber,demarDeRozan);
+freeAgents.set(masonPlumlee.jNumber,masonPlumlee);
+freeAgents.set(jabariParker.jNumber,jabariParker);
+freeAgents.set(harryGiles.jNumber,harryGiles);
+freeAgents.set(jeramiGrant.jNumber,jeramiGrant);
+freeAgents.set(darioSaric.jNumber,darioSaric);
 
 //Add CP3 and others to OKC Map
+const chrisPaul = new Player('Chris','Paul','PG',35,41358814,-1,3);
+const stevenAdams = new Player('Steven','Adams','C',27,27528090,6,12);
+const dennisSchroder= new Player ('Dennis','Schröder','PG',27,15500000,-1,17);
+const shaiGA = new Player('Shai','Gilgeous-Alexander',1.5,22,4141320,9,2);
+const terranceFerguson= new Player('Terrance','Ferguson',2.5,22,3944013,-1,23);
+const dariusBazley= new Player('Darius','Bazley',3,20,2399160,-1,7);
+const mikeMoose = new Player('Mike','Muscala',29,4.5,2283034,2,31);
+const dort = new Player('Luguentz','Dort',2,21,1517981,5,5);
+const abdelNader= new Player('Abdel','Nader',3.5,27,1752950 ,-1,11);
+const hamidouDiallo= new Player('Hamidou','Diallo',2,22,1663861,-1,6);
+const deonteBurton= new Player('Deonte','Burton',3,26,1663861 ,-1,30);
+const isaiahRoby= new Player('Isaiah','Roby',4,22,1517981,-1,22);
+
+//Add okc players to Map 
+okc.set(chrisPaul.jNumber,chrisPaul);
+okc.set(dennisSchroder.jNumber,dennisSchroder);
+okc.set(terranceFerguson.jNumber,terranceFerguson);
+okc.set(dariusBazley.jNumber,dariusBazley);
+okc.set(abdelNader.jNumber,abdelNader);
+okc.set(deonteBurton.jNumber,deonteBurton);
+okc.set(dort.jNumber,dort);
+okc.set(stevenAdams.jNumber,stevenAdams);
+okc.set(shai.jNumber,shai);
+okc.set(mikeMoose.jNumber,mikeMoose);
+okc.set(hamidouDiallo.jNumber,hamidouDiallo);
+okc.set(isaiahRoby.jNumber,isaiahRoby);
+
+
+
 
 //Trade function
 function reqTrade() {
