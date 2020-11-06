@@ -124,7 +124,11 @@ freeAgents.set(daniloGallinari.jNumber,daniloGallinari);
 freeAgents.set(jeffTeague.jNumber,jeffTeague);
 freeAgents.set(rajonRando.jNumber,rajonRando);
 freeAgents.set(derrickFavors.jNumber,derrickFavors);
+<<<<<<< HEAD
 freeAgents.set(kentBazemore.jNumber,kentBazemore);
+=======
+freeAgents.set(kentBazemore.jNumber,Bazemore);
+>>>>>>> 62ccc68f5052f5941b2b940d70b0911fdbed022d
 freeAgents.set(christianWood.jNumber,christianWood);
 freeAgents.set(goranDragic.jNumber,goranDragic);
 freeAgents.set(tristanThompson.jNumber,tristanThompson);
