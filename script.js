@@ -161,7 +161,11 @@ freeAgents.set(derrickFavors.jNumber,derrickFavors);
 <<<<<<< HEAD
 freeAgents.set(kentBazemore.jNumber,kentBazemore);
 =======
+<<<<<<< HEAD
 freeAgents.set(kentBazemore.jNumber,kentBazemore);
+=======
+freeAgents.set(kentBazemore.jNumber,Bazemore);
+>>>>>>> cc193331ced768a7aef4b58c1e2945f2ffe0b452
 >>>>>>> 62ccc68f5052f5941b2b940d70b0911fdbed022d
 freeAgents.set(christianWood.jNumber,christianWood);
 freeAgents.set(goranDragic.jNumber,goranDragic);
