@@ -273,7 +273,28 @@ const peytonPritchard= new Prospect('Peyton','Pritchard','Oregon',1,22,"https://
 const udokaAzubuike= new Prospect('Udoka','Azubuike','Kansas','5','21',"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066299.png&w=350&h=254");
 const malachiFlynn= new Prospect('Malachi','Flynn','San Diego State',1,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066668.png&w=350&h=254");
 const desmondBane= new Prospect('Desmond','Bane','TCU',2,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066320.png&w=350&h=254");
-//To be continued after draft
+const danielOturu= new Prospect('Daniel','Oturu','Minnesota',5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4397215.png&w=350&h=254");
+const xavierTillman= new Prospect('Xavier','Tillman Sr','Michigan State',4,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4277964.png&w=350&h=254");
+const vitKrejci= new Prospect('Vit','Krejci','Zaragoza',1,20,"https://static.wixstatic.com/media/47b19d_7928d8a1a6894b7cba08d2bd608b6dfb~mv2.jpg/v1/fill/w_707,h_470,al_c,q_80/1372246_1.webp");
+const sabenLee= new Prospect('Saben','Lee',"Vanderbilt",1,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4278124.png&w=350&h=254");
+const elijahHughes = new Prospect('Elijah','Hughes',"Syracuse",3,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066446.png&w=350&h=254");
+const nickRichards= new Prospect('Nick','Richards','Kentucky',5,23,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4278076.png&w=350&h=254");
+const jahmiusRamsey= new Prospect("Jahmi'us",'Ramsey',"Texas Tech",2,19,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4431688.png&w=350&h=254");
+const markoSimonovic= new Prospect('Marko','Simonovic','Mega Soccerbet',5,21,"https://cdn.nba.net/nba-drupal-prod/2020-06/Simonovic-new.jpg");
+const jordanNwora= new Prospect('Jordan','Nwora',"Louisville",3.5,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4277883.png&w=350&h=254");
+const cjElleby= new Prospect('CJ','Elleby',"Washington State",3.5,20,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4397166.png&w=350&h=254");
+const yamMadar= new Prospect('Yam','Madar','Hapoel Tel Aviv',1,19,"https://cdn.nba.net/nba-drupal-prod/2020-05/madar219.jpg");
+const isaiahJoe= new Prospect('Isaiah','Joe','Arkansas',1.5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4395702.png&w=350&h=254");
+const skylarMays= new Prospect('Skylar','Mays','LSU',2,23,"https://cdn.nba.net/nba-drupal-prod/2020-05/Mays219.jpg");
+const justinianJessup= new Prospect('Justinian','Jessup','Illawarra Hawks',2,22,"https://cdn.nba.net/nba-drupal-prod/2020-11/jessup.JPG");
+const kenyonMartinJr= new Prospect('Kenyon','Martin Jr','IMG Academy',3,19,"https://cdn.nba.net/nba-drupal-prod/2020-05/martin_jr219.jpg");
+const cassiusStanley= new Prospect('Cassius','Stanley',"Duke",2,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4431686.png&w=350&h=254");
+const jayScrubb= new Prospect('Jay','Scrubb','John A. Logan College',2,20,"https://cdn.nba.net/nba-drupal-prod/2020-11/jay-scrubb.png");
+const grantRiller('Grant','Riller','Charleston',1,23,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3912295.png&w=350&h=254");
+const reggiePerry= new Prospect('Reggie','Perry','Mississippi State',4,20,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4396959.png&w=350&h=254");
+const paulReed= new Prospect('Paul','Reed','DePaul',3.5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4278562.png&w=350&h=254");
+const jalenHarris= new Prospect('Jalen','Harris','Nevada',1.5,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066998.png&w=350&h=254");
+const samMerrill('Sam','Merrill','Utah State',1.5,24,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066757.png&w=350&h=254");
 
 //Add Prospects to prospect map
 prospects.set(anthonyEdwards);
@@ -307,31 +328,36 @@ prospects.set(jadenMcDaniels);
 prospects.set(malachiFlynn);
 prospects.set(desmondBane);
 //rd 2 
-
-
-
-
-
-
-
-
-
-
-prospects.set(theoMaledon);
-prospects.set(nicoMannion);
-prospects.set(robertWoodardII);
-prospects.set(tylerBey);
-prospects.set(cassiusWinston);
-prospects.set(treJones);
-prospects.set(vernonCarey);
 prospects.set(tyrellTerry);
-
-
-
-
-
-
-
+prospects.set(vernonCarey);
+prospects.set(danielOturu);
+prospects.set(theoMaledon);
+prospects.set(xavierTillman);
+prospects.set(tylerBey);
+prospects.set(vitKrejci);
+prospects.set(sabenLee);
+prospects.set(elijahHughes);
+prospects.set(robertWoodardII);
+prospects.set(treJones);
+prospects.set(nickRichards);
+prospects.set(jahmiusRamsey);
+prospects.set(markoSimonovic);
+prospects.set(jordanNwora);
+prospects.set(cjElleby);
+prospects.set(yamMadar);
+prospects.set(nicoMannion);
+prospects.set(isaiahJoe);
+prospects.set(skylarMays);
+prospects.set(justinianJessup);
+prospects.set(kenyonMartinJr);
+prospects.set(cassiusWinston);
+prospects.set(cassiusStanley);
+prospects.set(jayScrubb);
+prospects.set(grantRiller);
+prospects.set(reggiePerry);
+prospects.set(paulReed);
+prospects.set(jalenHarris);
+prospects.set(samMerrill);
 
 //Trade function
 function reqTrade() {
