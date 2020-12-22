@@ -9,5 +9,19 @@
   <body>
     <script src="script.js"></script>
 		<script src="p5.min.js"></script>
+		<div id="start"><h2>You are now in charge of player personnel for the Knicks!</h2>
+		<button onclick="tWindow()">GET STARTED</button></div>
+		<div id="askTrade" style="display:none">
+			<img id="cp3headshot"/>
+			<h2>You have a chance to negotiate a trade for Chris Paul with Sam Presti.</h2>
+			<button onclick="goTrade()">LET'S TALK!</button><br/>
+			<button onclick="endTrade()">HE'S TOO EXPENSIVE</button>
+		</div>
+		<div id="tradeScreen">
+			<div id = "okcRos"></div><br/>
+			<div id="nykRos"></div><br/>
+			<button id="req" onclick="requestTrade()">ASK TRADE</button>
+		</div>
+
   </body>
 </html>

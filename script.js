@@ -1,5 +1,7 @@
 let roster = new Map();
 let freeAgents = new Map();
+let okcSend = new Map();
+let nykSend = new Map();
 let okc = new Map();
 let knicksTeam = new Team('New York','Knicks','NYK',roster);
 let tradePieces;
@@ -16,7 +18,8 @@ positions.set(4,"PF");
 positions.set(4.5,"F/C");
 positions.set(5,"C");
 const SALARY_CAP = 109115000;
-function Player(fName,lName,pos,age,salary,asset,num,url=BLANK_PLAYER, ntc=false) {
+
+function Player(fName,lName,pos,age,salary,asset,num,url=BLANK_PLAYER,nonguar=false, ntc=false) {
 	this.first = fName;
 	this.last = lName;
   this.position=pos;
@@ -29,6 +32,7 @@ function Player(fName,lName,pos,age,salary,asset,num,url=BLANK_PLAYER, ntc=false
 	} else {
 		this.photo = url;
 	}
+	this.isGuaranteed=!nonguar;
 	this.noTrade=ntc;
 	this.toString = function() {
 		var str = "";
@@ -47,7 +51,7 @@ function Team(city,nickname,abbr,rosterMap) {
 	this.abbr = abbr;
 	this.roster = rosterMap;
 	this.cut = function(player,keepSal=true, isTrade=false) {
-		if (keepSal) {
+		if (keepSal && player.isGuaranteed) {
 			this.roster.get(-1).salary += player.salary;
 		}
 		if (!isTrade) {
@@ -99,19 +103,19 @@ function DraftBoard() {
 
 //create all Knicks players
 const rj = new Player('R.J.','Barrett',2.5,20,8231760,9,9,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4395625.png&w=350&h=254");
-const tajGibson = new Player('Taj','Gibson',4.5,35,10290000,4,67,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3986.png&w=350&h=254");
+const tajGibson = new Player('Taj','Gibson',4.5,35,10290000,4,67,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3986.png&w=350&h=254",true);
 const frenchFrank = new Player('Frank','Ntilikina',1,22,6176578,6,11,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4230547.png&w=350&h=254");
 const knox = new Player('Kevin','Knox',3,21,4588680,6,20,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4278075.png&w=350&h=254");
 const dennisSmith = new Player('Dennis','Smith Jr',1.5,22,5686677,4,4,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4065697.png&w=350&h=254");
 const braz = new Player('Ignas','Brazdeikis',2.5,21,1517981,3,17,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4397205.png&w=350&h=254");
-const bobbyPortis= new Player('Bobby','Portis',4,28,15000000,5,1,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3064482.png&w=350&h=254");
+const bobbyPortis= new Player('Bobby','Portis',4,28,15000000,5,1,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3064482.png&w=350&h=254",true);
 const juliusRandle= new Player('Julius','Randle',4,25,18900000,6,30,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3064514.png&w=350&h=254")
-const elfridPayton= new Player('Elfrid','Payton',1,26,8000000,2,6,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2583639.png&w=350&h=254");
-const wayneEllington= new Player('Wayne','Ellington',2.5,32,8195122,7,2,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3981.png&w=350&h=254");
+const elfridPayton= new Player('Elfrid','Payton',1,26,8000000,2,6,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2583639.png&w=350&h=254",true);
+const wayneEllington= new Player('Wayne','Ellington',2.5,32,8195122,7,2,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3981.png&w=350&h=254",true);
 const reggieBullock= new Player('Reggie','Bullock',2.5,29,4200000,5,25,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2528779.png&w=350&h=254");
-const damyeanDotson= new Player('Damyean','Dotson',2,26,2023150,5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2991149.png&w=350&h=254");
+const damyeanDotson= new Player('Damyean','Dotson',2,26,2023150,5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2991149.png&w=350&h=254",true);
 const mitchellRobinson= new Player('Mitchell','Robinson',5,22,1663861,8,23,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4351852.png&w=350&h=254");
-const theoPinson= new Player('Theo','Pinson',3,24,1701593,1,00,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3138154.png&w=350&h=254");
+const theoPinson= new Player('Theo','Pinson',3,24,1701593,1,00,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3138154.png&w=350&h=254",true);
 
 //add all players to roster
 roster.set(rj.jNumber,rj);
@@ -383,9 +387,13 @@ prospects.set(jalenHarris);
 prospects.set(samMerrill);
 
 //Trade function
-function reqTrade() {
-	if (tradePieces[0].getTotVal() >= tradePieces[1].getTotVal()) {
-		acceptTrade();
+function reqTrade(fromTm,fromPlay,nykPlay) {
+	let fromVal = 0;
+	let nykVal = 0;
+	fromPlay.forEach(ply => fromVal+= ply.asset);
+	nykPlay.forEach(ply => nykVal+=ply.asset);
+	if (nykVal >= fromVal) {
+		acceptTrade(fromTm,fromPlay,nykPlay);
 	} else {
 		rejectTrade();
 	}
@@ -421,3 +429,41 @@ function rejectTrade(){
 //leave a message saying trade rejected until offer is modified
 }
 
+
+////////////// front-end /////////////////////////////
+
+//if you want to trade for CP3, create Thunder Team obj
+function tWindow(){
+	document.getElementById('cp3headshot').src=chrisPaul.photo;
+  let div= document.getElementById('start');
+  div.style.display=none;
+  document.getElementById('askTrade').removeAttribute('style');
+}
+
+function goTrade(){
+  document.getElementById('askTrade').style.display='none';
+
+ let okcTeam= new Team('Oklahoma City','Thunder','OKC',okc);
+ var okcR = "";
+ var nykR = "";
+ var okcNums = Array.from(okcTeam.roster.keys());
+ var nykNums = Array.from(knicksTeam.keys());
+ for (var i = 0; i < okcTeam.roster.size; i++) {
+	 var player = okcTeam.roster.get(okcNums[i])
+	 okcR += "<input type=\"checkbox\" onchange=\"tAdd(okcTeam,"+player.jNumber+")\"><img src=\""+player.photo+"\"><h3>"+player.first+" "+player.last+"</h3><p>\t"+positions.get(player.position)+"\t$"+player.salary+"</p><br/>";
+ }
+ document.getElementById("okcRos").innerHTML=okcR;
+ document.getElementById('tradeScreen').removeAttribute('style');
+ fromOKC= Array.from(okcSend.values);
+ fromNYK= Array.from(nykSend.values);
+
+ }
+
+
+function endTrade(){
+  document.getElementById('askTrade').style.display='none';
+}
+
+function addToTrade(){
+  
+}
