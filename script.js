@@ -1,6 +1,7 @@
 let roster = new Map();
 let freeAgents = new Map();
 let okc = new Map();
+let knicksTeam = new Team('New York','Knicks','NYK',roster);
 let tradePieces;
 const BLANK_PLAYER = "";
 let prospects= new Map();
@@ -45,6 +46,18 @@ function Team(city,nickname,abbr,rosterMap) {
 	this.name = nickname;
 	this.abbr = abbr;
 	this.roster = rosterMap;
+	this.cut = function(player,keepSal=true, isTrade=false) {
+		if (keepSal) {
+			this.roster.get(-1).salary += player.salary;
+		}
+		if (!isTrade) {
+			freeAgency.set(player.jNumber,player);
+		}
+		this.roster.delete(player.jNumber);
+	}
+	this.sign = function(player) {
+		this.roster.set(player.jNumber,player);
+	}
 	this.capSpace = function() {
 		var teamSal = 0;
 		for (let player of Array.from(roster.values())) {
@@ -52,6 +65,7 @@ function Team(city,nickname,abbr,rosterMap) {
 		}
 		return SALARY_CAP - teamSal;
 	}
+  
 }
 
 function DraftBoard() {
@@ -125,31 +139,36 @@ roster.set(-1,deadCap);
 console.log(roster);
 
 //create freeAgents
-const paulMillsap=new Player('Paul','Millsap',4,35,7000000,5,4,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3015.png&h=96&w=96&scale=crop");
-const marcGasol= new Player('Marc','Gasol',5,35,5000000,7,33);
-const sergeIbaka= new Player('Serge', 'Ibaka',4.5,31,12000000,6,9);
-const daniloGallinari= new Player('Danilo','Gallinari',3.5,32,16000000,7,8);
+const boogie = new Player('DeMarcus','Cousins',5,29,2332000,7,15);
+const alecBurks = new Player('Alec','Burks',1.5,29,6000000,6,18);
+const austinRivers = new Player('Austin','Rivers',1.5,28,3500000,4,8);
+const nerlensNoel = new Player('Nerlens','Noel',5,26,5000000,4,3);
+const paulMillsap=new Player('Paul','Millsap',4,35,10000000,5,4,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3015.png&h=96&w=96&scale=crop");
+const marcGasol= new Player('Marc','Gasol',5,35,1630000,7,33);
+const sergeIbaka= new Player('Serge', 'Ibaka',4.5,31,10000000,6,9);
+const daniloGallinari= new Player('Danilo','Gallinari',3.5,32,21500000,7,8);
 const jeffTeague= new Player('Jeff','Teague',1,32,8000000,7,00);
-const derrickFavors= new Player('Derrick', 'Favors',4,29,7000000,3,22);
-const kentBazemore= new Player('Kent', 'Bazemore',2.5,31,5000000,4,26);
-const christianWood= new Player('Christian','Wood',4,25,16000000,8,35,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3058254.png&w=350&h=254");
-const goranDragic= new Player('Goran','Dragic',1,34,13000000,7,7);
+const derrickFavors= new Player('Derrick', 'Favors',4,29,9000000,3,22);
+const kentBazemore= new Player('Kent', 'Bazemore',2.5,31,2320000,4,26);
+const christianWood= new Player('Christian','Wood',4,25,13670000,8,35,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3058254.png&w=350&h=254");
+const goranDragic= new Player('Goran','Dragic',1,34,18700000,7,7);
 const tristanThompson= new Player('Tristan', 'Thompson',4.5,29,10000000,4,13);
-const davisBertans= new Player('Davis','Bertans',4,27,15000000,7,42);
-const joeHarris=new Player('Joe','Harris',2.5,29,15000000,5,12);
+const davisBertans= new Player('Davis','Bertans',4,27,16000000,7,42);
+const joeHarris=new Player('Joe','Harris',2.5,29,18000000,5,12);
 const kellyOlynyk= new Player('Kelly','Olynyk',4.5,29,4000000,4,9);
-const marcusMorris= new Player('Marcus','Morris',3.5,31,12000000,6,31);
-const jordanClarkson= new Player('Jordan','Clarkson',1.5,28,9000000,6,00);
+const marcusMorris= new Player('Marcus','Morris',3.5,31,16000000,6,31);
+const jordanClarkson= new Player('Jordan','Clarkson',1.5,28,13000000,6,00);
 const andreRoberson= new Player('Andre','Roberson',2.5,28,2700000,2,21);
-const joshJackson= new Player('Josh','Jackson',2.5,23,2700000,4,20);
-const jamesEnnis= new Player('James','Ennis III',2.5,30,2700000,6,11);
-const jahlilOkafor= new Player('Jahlil','Okafor',5,24,2700000,3,9);
-const justinHoliday= new Player('Justin','Holiday',2.5,31,5000000,5,8);
-const hassanWhiteside = new Player('Hassan','Whiteside',5,31,10000000,4,21);
-const fredVanVleet = new Player('Fred','VanVleet',1.5,26,20000000,7,23);
+const joshJackson= new Player('Josh','Jackson',2.5,23,5000000,4,20);
+const jamesEnnis= new Player('James','Ennis III',2.5,30,3300000,6,11);
+const jahlilOkafor= new Player('Jahlil','Okafor',5,24,2000000,3,9);
+const justinHoliday= new Player('Justin','Holiday',2.5,31,6100000,5,8);
+const hassanWhiteside = new Player('Hassan','Whiteside',5,31,2320000,4,21);
+const fredVanVleet = new Player('Fred','VanVleet',1.5,26,21250000,7,23);
 const masonPlumlee = new Player('Mason','Plumlee',5,30,8000000,6,7);
-const harryGiles = new Player('Harry','Giles',4.5,22,6000000,6,20);
-const jeramiGrant = new Player('Jerami','Grant',3.5,26,14000000,7,9);
+const harryGiles = new Player('Harry','Giles',4.5,22,1679000,6,20);
+const jeramiGrant = new Player('Jerami','Grant',3.5,26,20000000,7,9);
+
 
 //Add FA to FA map
 freeAgents.set(paulMillsap.jNumber,paulMillsap);
@@ -186,7 +205,10 @@ freeAgents.set(masonPlumlee.jNumber,masonPlumlee);
 freeAgents.set(jabariParker.jNumber,jabariParker);
 freeAgents.set(harryGiles.jNumber,harryGiles);
 freeAgents.set(jeramiGrant.jNumber,jeramiGrant);
-freeAgents.set(darioSaric.jNumber,darioSaric);
+freeAgents.set(austinRivers.jNumber,austinRivers);
+freeAgents.set(nerlensNoel.jNumber,nerlensNoel);
+freeAgents.set(alecBurks.jNumber,alecBurks);
+freeAgents.set(boogie.jNumber,boogie);
 
 //Add CP3 and others to OKC Map
 const chrisPaul = new Player('Chris','Paul',1,35,41358814,10,3);
@@ -219,7 +241,7 @@ okc.set(isaiahRoby.jNumber,isaiahRoby);
 //Create draft prospect class 
 let pickCap = new Map();
 
-function Prospect(first,last,frm,pos,age,url) {
+function Prospect(first,last,frm,pos,age,url,pickNumber) {
 	this.first = first;
 	this.last = last;
 	this.pos = pos;
@@ -229,6 +251,7 @@ function Prospect(first,last,frm,pos,age,url) {
 	this.drafted = function(pick) {
 		roster.set(null,new Player(first,last,pos,age,pickCap.get(pick),7,null,photo));
 	}
+  this.pickNumber=pickNumber;
 }
 
 
@@ -273,7 +296,28 @@ const peytonPritchard= new Prospect('Peyton','Pritchard','Oregon',1,22,"https://
 const udokaAzubuike= new Prospect('Udoka','Azubuike','Kansas','5','21',"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066299.png&w=350&h=254");
 const malachiFlynn= new Prospect('Malachi','Flynn','San Diego State',1,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066668.png&w=350&h=254");
 const desmondBane= new Prospect('Desmond','Bane','TCU',2,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066320.png&w=350&h=254");
-//To be continued after draft
+const danielOturu= new Prospect('Daniel','Oturu','Minnesota',5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4397215.png&w=350&h=254");
+const xavierTillman= new Prospect('Xavier','Tillman Sr','Michigan State',4,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4277964.png&w=350&h=254");
+const vitKrejci= new Prospect('Vit','Krejci','Zaragoza',1,20,"https://static.wixstatic.com/media/47b19d_7928d8a1a6894b7cba08d2bd608b6dfb~mv2.jpg/v1/fill/w_707,h_470,al_c,q_80/1372246_1.webp");
+const sabenLee= new Prospect('Saben','Lee',"Vanderbilt",1,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4278124.png&w=350&h=254");
+const elijahHughes = new Prospect('Elijah','Hughes',"Syracuse",3,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066446.png&w=350&h=254");
+const nickRichards= new Prospect('Nick','Richards','Kentucky',5,23,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4278076.png&w=350&h=254");
+const jahmiusRamsey= new Prospect("Jahmi'us",'Ramsey',"Texas Tech",2,19,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4431688.png&w=350&h=254");
+const markoSimonovic= new Prospect('Marko','Simonovic','Mega Soccerbet',5,21,"https://cdn.nba.net/nba-drupal-prod/2020-06/Simonovic-new.jpg");
+const jordanNwora= new Prospect('Jordan','Nwora',"Louisville",3.5,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4277883.png&w=350&h=254");
+const cjElleby= new Prospect('CJ','Elleby',"Washington State",3.5,20,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4397166.png&w=350&h=254");
+const yamMadar= new Prospect('Yam','Madar','Hapoel Tel Aviv',1,19,"https://cdn.nba.net/nba-drupal-prod/2020-05/madar219.jpg");
+const isaiahJoe= new Prospect('Isaiah','Joe','Arkansas',1.5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4395702.png&w=350&h=254");
+const skylarMays= new Prospect('Skylar','Mays','LSU',2,23,"https://cdn.nba.net/nba-drupal-prod/2020-05/Mays219.jpg");
+const justinianJessup= new Prospect('Justinian','Jessup','Illawarra Hawks',2,22,"https://cdn.nba.net/nba-drupal-prod/2020-11/jessup.JPG");
+const kenyonMartinJr= new Prospect('Kenyon','Martin Jr','IMG Academy',3,19,"https://cdn.nba.net/nba-drupal-prod/2020-05/martin_jr219.jpg");
+const cassiusStanley= new Prospect('Cassius','Stanley',"Duke",2,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4431686.png&w=350&h=254");
+const jayScrubb= new Prospect('Jay','Scrubb','John A. Logan College',2,20,"https://cdn.nba.net/nba-drupal-prod/2020-11/jay-scrubb.png");
+const grantRiller('Grant','Riller','Charleston',1,23,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3912295.png&w=350&h=254");
+const reggiePerry= new Prospect('Reggie','Perry','Mississippi State',4,20,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4396959.png&w=350&h=254");
+const paulReed= new Prospect('Paul','Reed','DePaul',3.5,21,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4278562.png&w=350&h=254");
+const jalenHarris= new Prospect('Jalen','Harris','Nevada',1.5,22,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066998.png&w=350&h=254");
+const samMerrill('Sam','Merrill','Utah State',1.5,24,"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066757.png&w=350&h=254");
 
 //Add Prospects to prospect map
 prospects.set(anthonyEdwards);
@@ -307,31 +351,36 @@ prospects.set(jadenMcDaniels);
 prospects.set(malachiFlynn);
 prospects.set(desmondBane);
 //rd 2 
-
-
-
-
-
-
-
-
-
-
-prospects.set(theoMaledon);
-prospects.set(nicoMannion);
-prospects.set(robertWoodardII);
-prospects.set(tylerBey);
-prospects.set(cassiusWinston);
-prospects.set(treJones);
-prospects.set(vernonCarey);
 prospects.set(tyrellTerry);
-
-
-
-
-
-
-
+prospects.set(vernonCarey);
+prospects.set(danielOturu);
+prospects.set(theoMaledon);
+prospects.set(xavierTillman);
+prospects.set(tylerBey);
+prospects.set(vitKrejci);
+prospects.set(sabenLee);
+prospects.set(elijahHughes);
+prospects.set(robertWoodardII);
+prospects.set(treJones);
+prospects.set(nickRichards);
+prospects.set(jahmiusRamsey);
+prospects.set(markoSimonovic);
+prospects.set(jordanNwora);
+prospects.set(cjElleby);
+prospects.set(yamMadar);
+prospects.set(nicoMannion);
+prospects.set(isaiahJoe);
+prospects.set(skylarMays);
+prospects.set(justinianJessup);
+prospects.set(kenyonMartinJr);
+prospects.set(cassiusWinston);
+prospects.set(cassiusStanley);
+prospects.set(jayScrubb);
+prospects.set(grantRiller);
+prospects.set(reggiePerry);
+prospects.set(paulReed);
+prospects.set(jalenHarris);
+prospects.set(samMerrill);
 
 //Trade function
 function reqTrade() {
@@ -341,3 +390,34 @@ function reqTrade() {
 		rejectTrade();
 	}
 } 
+
+//draft function
+function draftPlayer(player,pickNumber){
+	player.salary=pick[pickNumber];
+  player.pickNumber=pickNumber;
+  roster.set(player.jNumber,player);
+}
+
+//accept trade
+function acceptTrade(fromTeam,playersFrom,playersNYK){
+  
+  // send players from trade team to NYK
+  for(var i=0;i<playersFrom.length;i++){
+    fromTeam.cut(playersFrom[i]);
+    knicksTeam.sign(playersFrom[i]);
+  }
+
+  // send players from NYK to trade team
+  for(var j=0;j<playersFrom.length;j++){
+    knicksTeam.cut(playersNYK[j]);
+    fromTeam.sign(playersNYK[j]);
+  }
+  
+  
+}
+
+//reject trade
+function rejectTrade(){
+//leave a message saying trade rejected until offer is modified
+}
+
